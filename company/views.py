@@ -9,18 +9,18 @@ def companies_list(request):
 
 
     company_types = request.GET.get('company_types')
+    ## filter by company type
     if company_types:
         my_companies = company.objects.filter(company_types=company_types)
-
+    ## filter by company city
     city = request.GET.get('city')
     if city:
         my_companies = company.objects.filter(city=city)
-
-
+    ## filter by company technologies
+    stack = request.GET.get('stack')
+    if stack:
+        my_companies = company.objects.filter(stack=stack)
 
 
     my_companies = my_companies.order_by('published_date')
     return render(request, 'company/companies_list.html', {'my_companies': my_companies})
-
-
-
