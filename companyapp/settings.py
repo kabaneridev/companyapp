@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'company',
     'multiselectfield',
+    'django_filters',
 
 ]
 

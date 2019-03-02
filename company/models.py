@@ -5,13 +5,26 @@ from django.db import models
 from django.utils import timezone
 from django.core.validators import MinValueValidator
 from multiselectfield import MultiSelectField
+import django_filters
 
-COMPANY_TYPES = (
-        ('star', 'Startup'),
-        ('sh', 'Software House'),
-        ('ecom', 'E-commerce'),
-        ('corp', 'Corporation'),
-        )
+TYPES = (
+        ('startup', 'Startup'),
+        ('software_house', 'Software House'),
+        ('e-commerce', 'E-commerce'),
+        ('corporation', 'Corporation'),
+    )
+
+CITIES = (
+         ('warszawa', 'Warszawa'),
+         ('poznan', 'Poznan'),
+         ('szczecin', 'Szczecin'),
+         ('gdansk', 'Gdansk'),
+         ('krakow', 'Krakow'),
+         ('wroclaw', 'Wroclaw'),
+         ('katowice', 'Katowice'),
+         ('gliwice', 'Gliwice')
+
+    )
 
 COMPANY_TECHNOLOGIES = (
         ('php', 'PHP'),
@@ -23,14 +36,14 @@ COMPANY_TECHNOLOGIES = (
         ('jee', 'Java EE'),
         ('python', 'Python'),
         ('django' , 'Django'),
-        )
+    )
 
 
 class company(models.Model):
-    company_name = models.CharField(max_length=100, blank=False)
-    company_types = models.CharField(max_length=4, choices=COMPANY_TYPES)
-    company_workers = models.PositiveIntegerField(validators=[MinValueValidator(1)])
-    city = models.CharField(max_length=100, blank=False)
+    name = models.CharField(max_length=100, blank=False)
+    type = models.CharField(max_length=15, choices=TYPES)
+    workers = models.PositiveIntegerField(validators=[MinValueValidator(1)])
+    city = models.CharField(max_length=15,choices=CITIES)
     stack = MultiSelectField(max_length=25, choices=COMPANY_TECHNOLOGIES, min_choices=1)
     company_about = models.TextField(max_length=500, blank=False)   
     created_date = models.DateTimeField(default=timezone.now)
@@ -41,7 +54,7 @@ class company(models.Model):
         self.save()
         
     def __str__(self):
-        return self.company_name
+        return self.name
 
     
    

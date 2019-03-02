@@ -10,15 +10,15 @@
         <div>
             <h1><a href="/">IT Companies Checker</a></h1>
             <a href="/brands" class="btn btn-default">All</a>
-            <a href="/brands?type=startup" class="btn btn-default">Startup</a>
-            <a href="/brands?type=software_house" class="btn btn-default">Software House</a>
-            <a href="/brands?type=corporation" class="btn btn-default">Corporation</a>
-            <a href="/brands?type=e-commerce" class="btn btn-default">E-commerce</a>
+            <a href="/brands?company_types=star" class="btn btn-default">Startup</a>
+            <a href="/brands?company_types=sh" class="btn btn-default">Software House</a>
+            <a href="/brands?company_types=corp" class="btn btn-default">Corporation</a>
+            <a href="/brands?company_types=ecom" class="btn btn-default">E-commerce</a>
         </div>
         <div>
         	<a href="/" class="btn btn-default">All</a>
-        	<a href=?city=warszawa class="btn btn-default">Warszawa</a>
-        	<a href=?city=gliwice class="btn btn-default">Gliwice</a>
+        	<a href=?city=Warszawa class="btn btn-default">Warszawa</a>
+        	<a href=?city=Gliwice class="btn btn-default">Gliwice</a>
         </div>
         <div>
         	<a href="/brands?stack=php" class="btn btn-default">PHP</a>
@@ -29,9 +29,9 @@
     
         <div class="row">
             <div class="col-md-4">
-                <h1><a href="">{{ company.name }}</a></h1>
-                <p>type:   {{ company.get_type_display }}</p>
-                <p>company workers: {{ company.workers }}</p>
+                <h1><a href="">{{ company.company_name }}</a></h1>
+                <p>type:   {{ company.get_company_types_display }}</p>
+                <p>company workers: {{ company.company_workers }}</p>
                 <p>company headquarters: {{ company.city }}</p>
                 <p>company technologies {{ company.get_stack_display }} </p>
                 <p>about company: {{ company.company_about }} </p>

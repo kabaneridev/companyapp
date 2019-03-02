@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.utils import timezone
 from .models import company
+from .filters import CompanyFilter
 # Create your views here.
 
 def companies_list(request):
@@ -8,10 +9,10 @@ def companies_list(request):
         published_date__lte=timezone.now())
 
 
-    company_types = request.GET.get('company_types')
+    type = request.GET.get('type')
     ## filter by company type
-    if company_types:
-        my_companies = company.objects.filter(company_types=company_types)
+    if type:
+        my_companies = company.objects.filter(type=type)
     ## filter by company city
     city = request.GET.get('city')
     if city:
@@ -24,3 +25,7 @@ def companies_list(request):
 
     my_companies = my_companies.order_by('published_date')
     return render(request, 'company/companies_list.html', {'my_companies': my_companies})
+
+def comp_list(request):
+    f = CompanyFilter(request.GET, queryset=company.objects.all())
+    return render(request, 'company/comp_list.html', {'filter': f})
