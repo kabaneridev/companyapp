@@ -44,7 +44,7 @@ class company(models.Model):
     type = models.CharField(max_length=15, choices=TYPES)
     workers = models.PositiveIntegerField(validators=[MinValueValidator(1)])
     city = models.CharField(max_length=15,choices=CITIES)
-    stack = MultiSelectField(max_length=25, choices=COMPANY_TECHNOLOGIES, min_choices=1)
+    stack = models.CharField(max_length=15, choices=COMPANY_TECHNOLOGIES)
     company_about = models.TextField(max_length=500, blank=False)   
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)

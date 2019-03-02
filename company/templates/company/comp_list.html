@@ -15,7 +15,7 @@
         <input type="submit" />
     </form>
     {% for obj in filter.qs %}
-        Firma: {{ obj.name }} Miasto: {{ obj.city }} - Stack: {{ obj.stack }} - Liczba pracownikow: {{ obj.workers }}
+        Firma: {{ obj.name }} Typ firmy: {{ obj.type }} Miasto: {{ obj.city }} - Stack: {{ obj.stack }} - Liczba pracownikow: {{ obj.workers }}
          <br />
     {% endfor %}
 {% endblock %}}
