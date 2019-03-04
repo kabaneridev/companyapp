@@ -1,0 +1,24 @@
+{% load static %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div id="header">   
+        <a href="/">Home page</a>
+    </div>
+    <div id="filter">
+    <form action="" method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+    {% for obj in filter.qs %}
+        Company: {{  obj.name }} Type: {{  obj.type }} City: {{ obj.city }} Stack: {{  obj.stack }} 
+         <br />
+    {% endfor %}
+{% endblock %}
+    </div>
+</body>
