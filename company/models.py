@@ -27,7 +27,7 @@ CITIES = (
     )
 
 COMPANY_TECHNOLOGIES = (
-        ('php', 'PHP'),
+        ('PHP', 'PHP'),
         ('js', 'JavaScript'),
         ('ang', 'Angular'),
         ('java', 'Java'),
@@ -38,13 +38,20 @@ COMPANY_TECHNOLOGIES = (
         ('django' , 'Django'),
     )
 
+STUDENTS = (
+		('No', 'No'),
+		('Yes', 'Yes')
+	)
+
 
 class Company(models.Model):
     name = models.CharField(max_length=100, blank=False)
+    students = models.CharField(max_length=3, choices=STUDENTS)
     type = models.CharField(max_length=15, choices=TYPES)
     workers = models.PositiveIntegerField(validators=[MinValueValidator(1)])
     city = models.CharField(max_length=15,choices=CITIES)
-    stack = models.CharField(max_length=15, choices=COMPANY_TECHNOLOGIES)
+    stack = MultiSelectField(choices=COMPANY_TECHNOLOGIES)
+    ##stack = models.CharField(max_length=15, choices=COMPANY_TECHNOLOGIES)
     stack_two = models.CharField(max_length=15, choices=COMPANY_TECHNOLOGIES, default='value')
     company_about = models.TextField(max_length=500, blank=False)   
     created_date = models.DateTimeField(default=timezone.now)

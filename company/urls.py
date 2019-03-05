@@ -7,8 +7,9 @@ from company.models import Company
 urlpatterns = [
 ##	temporary disabled
 	path('', views.comp_list, name='comp_list'),
-	##('brands', views.comp_list, name='comp_list'),
-    url(r'^brands$', views.comp_list),
+	path('brands/', views.comp_list, name='comp_list'),	
+    url(r'^brands/$', views.comp_list),
+    ##path('brands/', object_filter, {'model' : Company}),
     url(r'^list/$', object_filter, {'model': Company}),
 
 ]
