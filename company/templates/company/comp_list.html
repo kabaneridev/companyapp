@@ -1,24 +1,16 @@
-{% load static %}
+{% extends 'company/base.html' %}
 {% block content %}
 
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <div id="header">   
-        <a href="/blog" class="btn btn-outline-primary" role="button" aria-pressed="true">IT Related Blog</a>
-            <a href="/" class="btn btn-outline-primary" role="button" aria-pressed="true">IT Companies Checker</a>
-    </div>
+
     <div id="filter">
     <form action="" method="get">
         {{ filter.form.as_p }}
         <input type="submit" />
     </form>
     {% for obj in filter.qs %}
-        Company: {{  obj.name }} Type: {{  obj.type }} City: {{ obj.city }} Stack: {{  obj.stack }} 
+    <a href="/brands/{{obj.id}}">{{ obj.name }}</a>
+        <br> Type: {{  obj.type }} City: {{ obj.city }} Stack: {{  obj.stack }} 
          <br />
+         <br>
     {% endfor %}
 {% endblock %}
-    </div>
-</body>

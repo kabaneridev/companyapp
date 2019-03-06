@@ -8,8 +8,8 @@ urlpatterns = [
 ##	temporary disabled
 	path('', views.comp_list, name='comp_list'),
 	path('brands/', views.comp_list, name='comp_list'),	
-    url(r'^brands/$', views.comp_list),
-    ##path('brands/', object_filter, {'model' : Company}),
+	path('brands/<int:pk>/', views.brands, name='brands'),
+	path('brands/<slug:slug>/', views.brands, name='comp_view'),
     url(r'^list/$', object_filter, {'model': Company}),
 
 ]

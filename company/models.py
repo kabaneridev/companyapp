@@ -1,8 +1,7 @@
 from django.db import models
-
-# Create your models here.
 from django.db import models
 from django.utils import timezone
+from django.utils.text import slugify
 from django.core.validators import MinValueValidator
 from multiselectfield import MultiSelectField
 import django_filters
@@ -56,6 +55,11 @@ class Company(models.Model):
     company_about = models.TextField(max_length=500, blank=False)   
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Company, self).save(*args, **kwargs)
 
     def publish(self):
         self.published_date = timezone.now()

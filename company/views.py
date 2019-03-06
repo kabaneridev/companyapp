@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Company
 from .filters import CompanyFilter
@@ -7,8 +7,8 @@ from .filters import CompanyFilter
 def companies_list(request):
     my_companies = Company.objects.all()
 
-    type = request.GET.get('type')
     ## filter by company type
+    type = request.GET.get('type')
     if type:
         my_companies = Company.objects.filter(type=type)
     ## filter by company city
@@ -26,3 +26,11 @@ def companies_list(request):
 def comp_list(request):
     f = CompanyFilter(request.GET, queryset=Company.objects.all())
     return render(request, 'company/comp_list.html', {'filter': f})
+
+##def brands(request, slug):
+  ##  brands = Company.objects.all()
+    ##return render(request, 'company/comp_view.html', {'brands': brands})
+
+def brands(request, pk):
+    brand = get_object_or_404(Company, pk=pk)
+    return render(request, 'company/comp_view.html', {'brand': brand})
