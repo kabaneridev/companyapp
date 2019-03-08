@@ -4,6 +4,18 @@
 
 
 	<h1> {{ brand.name }} </h1>
+	<p>Image {% if brand.image != None %}
+        <img src="{{ brand.image.url }}">
+        {% endif%}</p>
+        <p>Icon {% if brand.icon != None %}
+        <img src="{{ brand.icon.url }}" width="30" height="30">
+        {% endif%}</p>
+    <p> City: {{ brand.city }}</p>
+    <p> Type: {{ brand.type }}</p>
+    <p> Stack: {{ brand.stack }} </p>
+    <p> Workers: {{ brand.workers }}</p>
+    <p> Open for students: {{ brand.students }}</p>
+    <p> About us: {{ brand.company_about }}</p>
 
 
 

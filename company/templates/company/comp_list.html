@@ -9,6 +9,13 @@
     </form>
     {% for obj in filter.qs %}
     <a href="/brands/{{obj.id}}">{{ obj.name }}</a>
+        <p>Image {% if obj.image != None %}
+        <img src="{{ obj.image.url }}">
+        {% endif%}</p>
+        <p>Icon {% if obj.icon != None %}
+        <img src="{{ obj.icon.url }}" width="30" height="30">
+        {% endif%}</p>
+        
         <br> Type: {{  obj.type }} City: {{ obj.city }} Stack: {{  obj.stack }} 
          <br />
          <br>

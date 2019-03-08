@@ -7,21 +7,21 @@ from multiselectfield import MultiSelectField
 import django_filters
 
 TYPES = (
-        ('startup', 'Startup'),
-        ('software_house', 'Software House'),
-        ('e-commerce', 'E-commerce'),
-        ('corporation', 'Corporation'),
+        ('Startup', 'Startup'),
+        ('Software House', 'Software House'),
+        ('E-commerce', 'E-commerce'),
+        ('Corporation', 'Corporation'),
     )
 
 CITIES = (
-         ('warszawa', 'Warszawa'),
-         ('poznan', 'Poznan'),
-         ('szczecin', 'Szczecin'),
-         ('gdansk', 'Gdansk'),
-         ('krakow', 'Krakow'),
-         ('wroclaw', 'Wroclaw'),
-         ('katowice', 'Katowice'),
-         ('gliwice', 'Gliwice')
+         ('Warszawa', 'Warszawa'),
+         ('Poznan', 'Poznan'),
+         ('Szczecin', 'Szczecin'),
+         ('Gdansk', 'Gdansk'),
+         ('Krakow', 'Krakow'),
+         ('Wroclaw', 'Wroclaw'),
+         ('Katowice', 'Katowice'),
+         ('Gliwice', 'Gliwice')
 
     )
 
@@ -56,6 +56,8 @@ class Company(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     slug = models.SlugField(unique=True)
+    icon = models.ImageField(blank=True, null=True)
+    image = models.ImageField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
