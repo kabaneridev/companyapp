@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from tinymce import HTMLField
 
 
 class Post(models.Model):
@@ -10,6 +11,7 @@ class Post(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True)
+    content = HTMLField('Content', default='something')
 
     def publish(self):
         self.published_date = timezone.now()

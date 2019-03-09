@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'multiselectfield',
     'django_filters',
     'blog',
+    'tinymce',
 
 ]
 
