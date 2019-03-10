@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Company
 from .filters import CompanyFilter
+from rest_framework import viewsets
+from .serializers import CompanySerializer
 # Create your views here.
 
 def companies_list(request):
@@ -34,3 +36,13 @@ def comp_list(request):
 def brands(request, pk):
     brand = get_object_or_404(Company, pk=pk)
     return render(request, 'company/comp_view.html', {'brand': brand})
+
+#rest api
+
+
+class CompanyViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
