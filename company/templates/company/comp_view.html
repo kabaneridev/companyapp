@@ -2,7 +2,7 @@
 
 {% block content %}
 
-
+    <a href="javascript:history.back()">Go Back</a>
 	<h1> {{ brand.name }} </h1>
 	<p>Image {% if brand.image != None %}
         <img src="{{ brand.image.url }}">
