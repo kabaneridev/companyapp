@@ -3,4 +3,13 @@ body {
 }
 h1 a {
     font-family : 'Laila';
+}
 color
+
+#map {
+    height: 100%;
+}
+.map {
+	height: 100%;
+}
+

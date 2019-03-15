@@ -1,30 +1,4 @@
-{% extends 'company/base.html' %}
-{% block content %}
-
-    <div class="col col-md-3" id="filter">
-    <form action="" method="get" id="submit">
-        {{ filter.form.as_p }}
-        <input type="submit"/>
-    </form>
-    {% for obj in filter.qs %}
-    {% if obj in filter.qs %}
-    <a href="/brands/{{obj.slug}}">{{ obj.name }}</a>
-        <p>Image {% if obj.image != None %}
-        <img src="{{ obj.image.url }}">
-        {% endif%}</p>
-        <p>Icon {% if obj.icon != None %}
-        <img src="{{ obj.icon.url }}" width="30" height="30">
-        {% endif%}</p>
-        
-        <br> Type: {{  obj.type }} City: {{ obj.city }} Stack: {{  obj.stack }} 
-    {% endif %}
-    {% empty %}
-        <p>no matches</p>
-    {% endfor %}
-    </div>
-    <div class="col col-md-9">
-         <div id="map" class="map"></div>
-    <script>
+<script>
 
       // The following example creates complex markers to indicate beaches near
       // Sydney, NSW, Australia. Note that the anchor is set to (0,32) to correspond
@@ -86,9 +60,3 @@
         }
       }
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
-    </script>
-
-    </div>
-{% endblock %}
