@@ -1,6 +1,6 @@
 {% extends 'company/base.html' %}
 {% block content %}
-
+  <div class="row">
     <div class="col col-md-3" id="filter">
     <form action="" method="get" id="submit">
         {{ filter.form.as_p }}
@@ -24,6 +24,8 @@
     </div>
     <div class="col col-md-9">
          <div id="map" class="map"></div>
+
+  </div>
     <script>
 
       // The following example creates complex markers to indicate beaches near
@@ -87,7 +89,7 @@
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzy7UOGGZ8mloKe85Sm3rFxKKBIa8KzNY&callback=initMap">
     </script>
 
     </div>

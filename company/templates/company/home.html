@@ -1,6 +1,88 @@
-{% extends 'company/base.html' %}
-{% block content %}
-
-
-
-{% endblock %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Django Company App</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/brands">Company Finder</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog">IT Related Blog</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          Django Company App ver 0.1
+        </span>
+      </div>
+    </nav>
+    <main>
+      <section class="features-section spad text-center">
+        <div class="container">
+          <div class="">
+            <img src="{% static 'icons/rocket.png' %}" alt="#">
+            <p class="">The best out there</p>
+            <h2 class="">See our features</h2>
+          </div>
+          <div class="row features">
+            <div class="col-lg-4 col-md-6 feature-item">
+              <div class="ft-icon">
+                <img src="{% static 'icons/google.png' %}" alt="#">
+              </div>
+              <h4>Google Maps Widget</h4>
+              <p>Find your next company by using Google Maps Widget.</p>
+            </div>
+            <div class="col-lg-4 col-md-6 feature-item fi-center-top">
+              <div class="ft-icon">
+                <img src="{% static 'icons/loupe.png' %}" alt="#">
+              </div>
+              <h4>Search for Companies</h4>
+              <p>With Company App you can search for companies by type, city, and is company open for students.</p>
+            </div>
+            <div class="col-lg-4 col-md-6 feature-item">
+              <div class="ft-icon">
+                <img src="{% static 'icons/student.png' %}" alt="#">
+              </div>
+              <h4>Learn more about Company</h4>
+              <p>Check the Company story, CEO, workers and more for free. </p>
+            </div>
+            
+          </div>
+        </div>
+        </section>
+    </main>
+    <section class="footer text-center">
+      <div class="container">
+        <h1>Footer</h1>
+        <div class="row">
+          <div class="col">
+            1 of 3
+          </div>
+          <div class="col">
+            2 of 3
+          </div>
+          <div class="col">
+            3 of 3
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="{% static 'js/jquery.min.js' %}"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

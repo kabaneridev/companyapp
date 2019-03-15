@@ -1,10 +1,4 @@
-body {
-    padding-left: 15px;
-}
-h1 a {
-    font-family : 'Laila';
-}
-color
+
 
 #map {
     height: 100%;
@@ -13,3 +7,12 @@ color
 	height: 100%;
 }
 
+.spad {
+	padding-top: 100px;
+}
+.footer {
+	padding-top: 100px;
+}
+.features {
+	padding-top: 30px;
+}
