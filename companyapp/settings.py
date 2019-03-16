@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'tinymce',
     'rest_framework',
     'markdown',
+    'bootstrap_modal_forms',
+    'widget_tweaks',
+    
 ]
 
 MIDDLEWARE = [
@@ -140,3 +143,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'krplominski@gmail.com'
+EMAIL_HOUST_PASSWORD = 'GMail123!'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

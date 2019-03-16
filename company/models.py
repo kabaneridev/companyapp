@@ -71,7 +71,7 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
-class AddCompany(models.Model):
+class ContactCompany(models.Model):
     name = models.CharField(max_length=200, blank=False)
     company_name = models.CharField(max_length=250, blank=False)
     email = models.EmailField(blank=False)

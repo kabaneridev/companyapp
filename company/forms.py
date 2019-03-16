@@ -1,8 +1,7 @@
 from django import forms
-from .models import AddCompany
-from bootstrap_modal_forms.mixins import PopRequestMixin, CreateUpdateAjaxMixin
 
-class AddCompanyForm(PopRequestMixin, CreateUpdateAjaxMixin, forms.ModelForm):
-    class Meta:
-        model = AddCompany
-        fields = ['name', 'company_name', 'email', 'phone_number']
+class ContactCompanyForm(forms.Form):
+    name = forms.CharField(max_length=150)
+    company = forms.CharField(required=True)
+    from_email = forms.EmailField(required=True)
+    phone_number = forms.CharField(max_length=13, required=True)

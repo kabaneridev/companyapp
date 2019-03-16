@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.views.generic import ListView, FormView
-from .models import Company, AddCompany
-from .forms import AddCompanyForm
+from .models import Company
+from .forms import ContactCompanyForm
 from .filters import CompanyFilter
 from rest_framework import viewsets
 from .serializers import CompanySerializer
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
+
 
 def comp_list(request):
     f = CompanyFilter(request.GET, queryset=Company.objects.all())
@@ -31,8 +34,23 @@ class CompanyViewSet(viewsets.ModelViewSet):
     serializer_class = CompanySerializer
 
 # modal contact company add form
-class AddCompany(FormView):
-    template_name = 'company/add_company.html'
-    form_class = AddCompanyForm
-    success_url = '/add_company'
 
+def emailView(request):
+    if request.method == 'GET':
+        form = ContactCompanyForm()
+    else:
+        form = ContactCompanyForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            company = form.cleaned_data['company']
+            from_email = form.cleaned_data['from_email']
+            phone_number = form.cleaned_data['phone_number']
+            try:
+                send_mail('Contact Form', company, from_email, ['krplominski@gmail.com'], fail_silently=False)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('/success')
+    return render(request, "company/email.html", {'form': form})
+
+def successView(request):
+    return HttpResponse('Success! Thank you for your message.')
