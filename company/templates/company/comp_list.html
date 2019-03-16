@@ -2,30 +2,49 @@
 {% block content %}
   <div class="row">
     <div class="col col-md-3" id="filter">
-    <form action="" method="get" id="submit">
+      <form action="" method="get" id="submit">
         {{ filter.form.as_p }}
-        <input type="submit"/>
-    </form>
-    {% for obj in filter.qs %}
-    {% if obj in filter.qs %}
-    <a href="/brands/{{obj.slug}}">{{ obj.name }}</a>
-        <p>Image {% if obj.image != None %}
-        <img src="{{ obj.image.url }}">
-        {% endif%}</p>
-        <p>Icon {% if obj.icon != None %}
-        <img src="{{ obj.icon.url }}" width="30" height="30">
-        {% endif%}</p>
-        
-        <br> Type: {{  obj.type }} City: {{ obj.city }} Stack: {{  obj.stack }} 
-    {% endif %}
-    {% empty %}
-        <p>no matches</p>
-    {% endfor %}
+         <input type="submit" value="Submit"/>
+      </form>
     </div>
-    <div class="col col-md-9">
-         <div id="map" class="map"></div>
-
-  </div>
+    <div class="col col-md-6"></div>
+   </div>
+   <div class="row comp_list">
+      <div class="col col-md-4 ">
+      {% for obj in filter.qs %}
+      {% if obj in filter.qs %}
+      <a href="/brands/{{obj.slug}}">
+      <div class="col col-md-12 company" style="background-image: url('{{ obj.image.url }}'); background-repeat: no-repeat, repeat; background-size: 100% auto;">
+      </div>
+      <div class="col col-md-12 bar">
+        <div class="basic-info">
+          <div class="name">
+            <h2>{{ obj.name }}</h2>
+          </div>
+          <div class="type">
+          {% if obj.icon != None %}
+            <img src="{{ obj.icon.url }}" width="16" height="16">
+          {% endif%}
+          {{  obj.type }} 
+          </div>
+          {% if obj.logo != None %}
+          <img class="company-logo" src="{{ obj.logo.url }}">
+          {% endif %}
+        </div>
+      </div>
+    </a>
+    <br>
+      {% endif %}
+      {% empty %}
+      <div class="col col-md-12">
+      <h2>no matches</h2>
+      </div>
+    {% endfor %}
+      </div>
+      <div class="col col-md-8 ">
+        <div id="map" class="map"></div>
+       </div>
+   </div>
     <script>
 
       // The following example creates complex markers to indicate beaches near

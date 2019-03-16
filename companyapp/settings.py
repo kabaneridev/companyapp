@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     'blog',
     'tinymce',
     'rest_framework',
-    'markdown'
-
+    'markdown',
 ]
 
 MIDDLEWARE = [

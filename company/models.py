@@ -58,6 +58,7 @@ class Company(models.Model):
     slug = models.SlugField(unique=True)
     icon = models.ImageField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True)
+    logo = models.ImageField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -69,6 +70,12 @@ class Company(models.Model):
         
     def __str__(self):
         return self.name
+
+class AddCompany(models.Model):
+    name = models.CharField(max_length=200, blank=False)
+    company_name = models.CharField(max_length=250, blank=False)
+    email = models.EmailField(blank=False)
+    phone_number = models.CharField(max_length=15, blank=True)
 
     
    
