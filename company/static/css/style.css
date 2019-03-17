@@ -31,8 +31,11 @@
 	font-weight: 500;
 	padding: 0;
 	position: absolute;
-	width: calc(100% - 525px);
+	width: calc(100% - 620px);
 	bottom: 50px;
+}
+.fa-facebook, .fa-twitter, .fa-instagram, .fa-linkedin, .fa-globe-europe {
+	color: white;
 }
 .heading {
 	margin-left: 30px;
@@ -52,6 +55,7 @@
 	float: right;
 	display: inline-block;
 	line-height: 48px;
+	padding: 5px;
 }
 .company-stats {
 	position: absolute;
@@ -105,6 +109,31 @@
 	overflow: hidden;
 	display: flex;
 	flex-wrap: wrap;
+}
+.logo-container {
+	position: relative;
+	height: 40px;
+	width: 40px;
+	margin: 0 auto;
+}
+.stack-logo {
+	width: 20%;
+	padding: 0 5px;
+	float: left;
+}
+.stack-img {
+	max-width: 40px;
+	max-height: 40px;
+	margin-left: 20%;
+}
+.tech-name {
+	font-size: 0.8rem;
+	color: #99a1ab;
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .footer {
 	padding-top: 100px;

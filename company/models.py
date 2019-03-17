@@ -2,7 +2,7 @@ from django.db import models
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, URLValidator
 from multiselectfield import MultiSelectField
 import django_filters
 
@@ -60,6 +60,11 @@ class Company(models.Model):
     image = models.ImageField(blank=True, null=True)
     logo = models.ImageField(blank=True, null=True)
     technologies = models.ManyToManyField('Stack')
+    website = models.TextField(max_length=150, blank=True, null=True, validators=[URLValidator()])
+    facebook = models.TextField(max_length=150, blank=True, null=True, validators=[URLValidator()])
+    instagram = models.TextField(max_length=150, blank=True, null=True, validators=[URLValidator()])
+    twitter = models.TextField(max_length=150, blank=True, null=True, validators=[URLValidator()])
+    linkedin = models.TextField(max_length=150, blank=True, null=True, validators=[URLValidator()])
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)

@@ -12,7 +12,37 @@
         <div class="heading">
             <div class="title">About us</div>
             <div class="social-media">
-                <a href="">Facebook</a>
+
+                {% if brand.website %}
+                <a class="" href="{{ brand.website }}">
+                    <i class="fas fa-globe-europe fa-2x"></i>
+                </a>
+                {% endif %}
+
+                {% if brand.facebook %}
+                <a class="" href="{{ brand.facebook }}">
+                    <i class="fab fa-facebook fa-2x"></i>
+                </a>
+                {% endif %}
+
+                {% if brand.instagram %}
+                <a class="" href="{{ brand.instagram }}">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+                {% endif %}
+
+                {% if brand.twitter %}
+                <a class="" href="{{ brand.twitter }}">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+                {% endif %}
+
+                {% if brand.linkedin %}
+                <a class="" href="{{ brand.linkedin }}">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                {% endif%}
+
             </div>
         </div>
         <div class="company-about">
@@ -47,8 +77,16 @@
         <div class="technologies-section">
             <p class="tech-heading">Technologies</p>
             <div class="technologies-wrapper">
-                {{ brand.technologies.all }}
-                
+            {% for technologies in brand.technologies.all %}
+                <div class="stack-logo">
+
+                    <div>
+                        <img class="stack-img" src="{{ technologies.icon }}">
+                    </div>
+                    <div class="tech-name">{{ technologies.name }}</div>
+                </div>
+            {% endfor %}   
+                </div>
             </div>
         </div>
     </div>
