@@ -25,7 +25,7 @@ CITIES = (
 
     )
 
-COMPANY_TECHNOLOGIES = (
+STACK = (
         ('PHP', 'PHP'),
         ('js', 'JavaScript'),
         ('ang', 'Angular'),
@@ -41,7 +41,10 @@ STUDENTS = (
 		('No', 'No'),
 		('Yes', 'Yes')
 	)
-
+STACK_ICONS = (
+        ('/static/icons/stack/php.png', 'PHP'),
+        ('/static/icons/stack/javascript.png', 'JavaScript'),
+    )
 
 class Company(models.Model):
     name = models.CharField(max_length=100, blank=False)
@@ -49,9 +52,6 @@ class Company(models.Model):
     type = models.CharField(max_length=15, choices=TYPES)
     workers = models.PositiveIntegerField(validators=[MinValueValidator(1)])
     city = models.CharField(max_length=15,choices=CITIES)
-    stack = MultiSelectField(choices=COMPANY_TECHNOLOGIES)
-    ##stack = models.CharField(max_length=15, choices=COMPANY_TECHNOLOGIES)
-    stack_two = models.CharField(max_length=15, choices=COMPANY_TECHNOLOGIES, default='value')
     company_about = models.TextField(max_length=500, blank=False)   
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
@@ -59,6 +59,7 @@ class Company(models.Model):
     icon = models.ImageField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True)
     logo = models.ImageField(blank=True, null=True)
+    technologies = models.ManyToManyField('Stack')
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -71,11 +72,14 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
-class ContactCompany(models.Model):
-    name = models.CharField(max_length=200, blank=False)
-    company_name = models.CharField(max_length=250, blank=False)
-    email = models.EmailField(blank=False)
-    phone_number = models.CharField(max_length=15, blank=True)
+# object stack relation manytomany with Company
+
+class Stack(models.Model):
+    name = models.CharField(max_length=30, choices=STACK)
+    icon = models.CharField(max_length=80, choices=STACK_ICONS)
+
+    def __str__(self):
+        return self.name
 
     
    

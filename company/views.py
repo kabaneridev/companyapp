@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.views.generic import ListView, FormView
-from .models import Company
+from .models import Company, Stack
 from .forms import ContactCompanyForm
 from .filters import CompanyFilter
 from rest_framework import viewsets
@@ -24,6 +24,10 @@ def home(request):
 def brands(request, slug):
     brand = get_object_or_404(Company, slug=slug)
     return render(request, 'company/comp_view.html', {'brand': brand})
+
+def stacks(request):
+    stack = get_object_or_404(Stack)
+    return render(request, 'company/comp_view.html', {'stack': stack})
 
 #rest api
 class CompanyViewSet(viewsets.ModelViewSet):

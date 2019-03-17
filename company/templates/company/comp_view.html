@@ -1,22 +1,58 @@
 {% extends 'company/base.html' %}
 
 {% block content %}
+<div class="row company-details">
+    <div class="col col-md-2"></div>
+    <div class="col col-md-8">
+    <input class="btn btn-success" type="button" value="Go Back" onclick="history.back(-1)" />
+    <div class="col col-md-12 company-bg" style="background-image: url('{{ brand.image.url }}'); background-repeat: no-repeat, repeat;">
+    </div>
+    <div class="bottom-overlay"></div>
+    <div class="company-description">
+        <div class="heading">
+            <div class="title">About us</div>
+            <div class="social-media">
+                <a href="">Facebook</a>
+            </div>
+        </div>
+        <div class="company-about">
+            {{ brand.company_about }}
+        </div>
 
-    <a href="javascript:history.back()">Go Back</a>
-	<h1> {{ brand.name }} </h1>
-	<p>Image {% if brand.image != None %}
-        <img src="{{ brand.image.url }}">
-        {% endif%}</p>
-        <p>Icon {% if brand.icon != None %}
-        <img src="{{ brand.icon.url }}" width="30" height="30">
-        {% endif%}</p>
-    <p> City: {{ brand.city }}</p>
-    <p> Type: {{ brand.type }}</p>
-    <p> Stack: {{ brand.stack }} </p>
-    <p> Workers: {{ brand.workers }}</p>
-    <p> Open for students: {{ brand.students }}</p>
-    <p> About us: {{ brand.company_about }}</p>
 
 
+    </div>
+    <div class="company-stats">
+        <div class="company-logo-container">
+            <img class="company-logo" src="{{ brand.logo.url }}">
+        </div>
+        <div class="company-attributes">
+            <div class="field-group">
+                <div class="field">Type</div>
+                <div class="value">{{ brand.type }}</div>
+            </div>
+            <div class="field-group">
+                <div class="field">Company size</div>
+                <div class="value">{{ brand.workers }}+</div>
+            </div>
+            <div class="field-group">
+                <div class="field">Headquarters</div>
+                <div class="value">{{ brand.city }}</div>
+            </div>
+            <div class="field-group">
+                <div class="field">Open for students</div>
+                <div class="value">{{ brand.students }}</div>
+            </div>
+        </div>
+        <div class="technologies-section">
+            <p class="tech-heading">Technologies</p>
+            <div class="technologies-wrapper">
+                {{ brand.technologies.all }}
+                
+            </div>
+        </div>
+    </div>
+    <div class="col col-md-2"></div>
+</div>
 
 {% endblock %}
