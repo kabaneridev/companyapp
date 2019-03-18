@@ -1,5 +1,5 @@
 {% extends 'company/base.html' %}
-
+{% load static %}
 {% block content %}
 <div class="row company-details">
     <div class="col col-md-2"></div>
@@ -31,9 +31,15 @@
                 </a>
                 {% endif %}
 
+                {% if brand.youtube %}
+                <a class="white" href="{{ brand.youtube }}">
+                    <i class="fab fa-youtube fa-2x"></i>
+                </a>
+                {% endif %}
+
                 {% if brand.twitter %}
                 <a class="" href="{{ brand.twitter }}">
-                    <i class="fab fa-instagram fa-2x"></i>
+                    <i class="fab fa-twitter fa-2x"></i>
                 </a>
                 {% endif %}
 
@@ -92,5 +98,91 @@
     </div>
     <div class="col col-md-2"></div>
 </div>
+<div class="row">
+    <div class="col col-md-1"></div>
+    <div class="col col-md-3">
+        <div class="menu">
+            <div class="company-logo-container">
+                <img class="company-logo" src="{{ brand.logo.url }}">
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a class="nav-link" href="#team">Team</a>
+                </li>
+                <li class="list-group-item">
+                    <a class="nav-link" href="#social_media">Social Media</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col col-md-1"></div>
+    <div class="col col-md-5 card-section">
+        <div class="team ">
+            <div class="card-title">
+                <span>Team</span>
+            </div>
+            <div class="row text-center">
+                <div class="col col-md-4">
+                    <p>Team member</p>
+                    <img src="{% static 'icons/student.png' %}">
+                    <p>Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker</p>
+                </div>
+                <div class="col col-md-4">
+                    <p>Team member</p>
+                    <img src="{% static 'icons/student.png' %}">
+                    <p>Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker</p>
+                </div>
+                <div class="col col-md-4">
+                    <p>Team member</p>
+                    <img src="{% static 'icons/student.png' %}">
+                    <p>Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="col col-md-2"></div>
+    <div class="col col-md-5"></div>
+    <div class="col col-md-5 card-section">
+        <div class="card-title">
+            <span>Social Media</span>
+            <div class="other-social">
+                <span>Check us also on</span>
+                <div class="social-media">
+                {% if brand.facebook %}
+                <a class="" href="{{ brand.facebook }}">
+                    <i class="fab fa-facebook fa-1x"></i>
+                </a>
+                {% endif %}
+
+                {% if brand.instagram %}
+                <a class="" href="{{ brand.instagram }}">
+                    <i class="fab fa-instagram fa-1x"></i>
+                </a>
+                {% endif %}
+
+                {% if brand.youtube %}
+                <a class="" href="{{ brand.youtube }}">
+                    <i class="fab fa-youtube fa-1x"></i>
+                </a>
+                {% endif %}
+
+                {% if brand.twitter %}
+                <a class="" href="{{ brand.twitter }}">
+                    <i class="fab fa-twitter fa-1x"></i>
+                </a>
+                {% endif %}
+
+                {% if brand.linkedin %}
+                <a class="" href="{{ brand.linkedin }}">
+                    <i class="fab fa-linkedin fa-1x"></i>
+                </a>
+                {% endif%}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div> 
 
 {% endblock %}

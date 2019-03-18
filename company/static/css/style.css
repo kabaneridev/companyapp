@@ -14,14 +14,14 @@
 	padding: 30px 30px 50px 30px;
 }
 .company-bg {
-	width: 100%;
+	width: 1150px;
 	height: 700px;
 }
 .bottom-overlay {
 	position: absolute;
 	bottom: 0;
-	left: 14px;
-	right: 92px;
+	left: 0;
+	right: 0;
 	height: 400px;
 	background-image: linear-gradient(to bottom, transparent, #000);
 }
@@ -56,6 +56,25 @@
 	display: inline-block;
 	line-height: 48px;
 	padding: 5px;
+	color: white;
+}
+.white {
+	color: white !important;
+}
+.other-social .social-media .fa-facebook {
+	color: #3b5998;
+}
+.other-social .social-media .fa-twitter {
+	color: #55acee;
+}
+.other-social .social-media .fa-instagram {
+	color: #e4405f;
+}
+.other-social .social-media .fa-linkedin {
+	color: #0976b4;
+}
+.other-social .social-media .fa-youtube {
+	color: #e52d27;
 }
 .company-stats {
 	position: absolute;
@@ -135,6 +154,48 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+.menu {
+	box-shadow: 0 2px 18px 10px rgba(225,232,240,0.7);
+	background-color: #FFF;
+	margin: 20px 0 0 0;
+	border-radius: 5px;
+	top: 0;
+}
+.card-section {
+	background-color: #FFF;
+	position: relative;
+	border-radius: 5px;
+	box-shadow: 0 2px 18px 10px rgba(225,232,240,0.7);
+	overflow: hidden;
+	margin-top: 40px;
+}
+.card-title {
+	padding: 24px 33px;
+	font-size: 32px;
+	font-weight: 500;
+	border-bottom: solid 2px #e1e8f0;
+}
+.other-social {
+	float: right;
+}
+.other-social span {
+	font-size: 14px;
+	line-height: 48px;
+	display: inline-block;
+	text-transform: uppercase;
+	color: #aab6c4;
+}
+.social-buttons {
+	display: inline-block;
+	vertical-align: sub;
+	line-height: 48px;
+}
+.team {
+	color: black;
+	font-size: 16px;
+	padding: 18px;
+}
+
 .footer {
 	padding-top: 100px;
 }
@@ -225,4 +286,8 @@ body.night #filter label
 body.night nav {
 	background: black !important;
 	color: white !important;
+}
+
+body.night .team {
+	color: white;
 }

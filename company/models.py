@@ -46,6 +46,42 @@ STACK_ICONS = (
         ('/static/icons/stack/javascript.png', 'JavaScript'),
     )
 
+POSITIONS = (
+        ('CEO', 'Chief Executive Officer'),
+        ('CTO', 'Chief Technology Officer'),
+        ('COO', 'Chief Operating Officer'),
+        ('CFO', 'Chief Financial Officer'),
+        ('Co-Founder', 'Co-Founder'),
+        ('Lead Software Developer', 'Lead Software Developer'),
+        ('Software Developer', 'Software Developer'),
+        ('Front-end Developer', 'Front-end Developer'),
+        ('Back-end Developer', 'Back-end Developer'),
+        ('QA Engineer', 'QA Engineer'),
+        ('Scrum Master', 'Scrum Master'),
+        ('HR Recruiter', 'HR recruiter'),
+    )
+
+# object position with relationship many to many to person
+
+class Position(models.Model):
+    position = models.CharField(max_length=50, choices=POSITIONS)
+
+    def __str__(self):
+        return self.position
+
+# object person relation many to one (many persons to one company)
+
+class Person(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    about = models.TextField(max_length=500, default=None)
+    position = models.ManyToManyField('Position')
+
+    def __str__(self):
+        return "%s %s" % (self.first_name, self.last_name)
+
+# object company
+
 class Company(models.Model):
     name = models.CharField(max_length=100, blank=False)
     students = models.CharField(max_length=3, choices=STUDENTS)
@@ -63,6 +99,7 @@ class Company(models.Model):
     website = models.TextField(max_length=150, blank=True, null=True, validators=[URLValidator()])
     facebook = models.TextField(max_length=150, blank=True, null=True, validators=[URLValidator()])
     instagram = models.TextField(max_length=150, blank=True, null=True, validators=[URLValidator()])
+    youtube = models.TextField(max_length=150, blank=True, null=True, validators=[URLValidator()])
     twitter = models.TextField(max_length=150, blank=True, null=True, validators=[URLValidator()])
     linkedin = models.TextField(max_length=150, blank=True, null=True, validators=[URLValidator()])
 
@@ -86,5 +123,3 @@ class Stack(models.Model):
     def __str__(self):
         return self.name
 
-    
-   
