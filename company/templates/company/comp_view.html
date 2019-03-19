@@ -123,6 +123,19 @@
             </div>
             <div class="row text-center">
                 <div class="col col-md-4">
+                    {% for team in brand.team.all %}
+                    <p>{{ team.first_name }} {{ team.last_name }}</p>
+                    
+                    <img class="img-thumbnail" src="/media/{{ team.photo }}">
+                    {% for position in team.position.all %}
+                      {{ position.position }}
+                    {% endfor %}
+                    <p>{{ team.about }} </p>
+                </div>
+                {% endfor %}
+
+                {{ person.position }}
+               <!-- <div class="col col-md-4">
                     <p>Team member</p>
                     <img src="{% static 'icons/student.png' %}">
                     <p>Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker</p>
@@ -131,12 +144,7 @@
                     <p>Team member</p>
                     <img src="{% static 'icons/student.png' %}">
                     <p>Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker</p>
-                </div>
-                <div class="col col-md-4">
-                    <p>Team member</p>
-                    <img src="{% static 'icons/student.png' %}">
-                    <p>Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker</p>
-                </div>
+                </div> !-->
             </div>
             
         </div>
@@ -181,7 +189,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div> 
 

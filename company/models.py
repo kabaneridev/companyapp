@@ -76,6 +76,7 @@ class Person(models.Model):
     last_name = models.CharField(max_length=50)
     about = models.TextField(max_length=500, default=None)
     position = models.ManyToManyField('Position')
+    photo = models.ImageField(blank=True, null=True, default=None)
 
     def __str__(self):
         return "%s %s" % (self.first_name, self.last_name)
@@ -83,6 +84,8 @@ class Person(models.Model):
 # object company
 
 class Company(models.Model):
+    # field person with relation many to one (many persons to 1 company)
+    team = models.ManyToManyField('Person')
     name = models.CharField(max_length=100, blank=False)
     students = models.CharField(max_length=3, choices=STUDENTS)
     type = models.CharField(max_length=15, choices=TYPES)
