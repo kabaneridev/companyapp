@@ -13,5 +13,5 @@ urlpatterns = [
     path('email/', emailView, name='email'),
     path('success/', successView, name='success'),
     path('jobs/', views.job_list, name="job_list"),
-    #path('jobs/<slug:slug>/', views.jobs, name='job_view'),
+    path('jobs/<slug:slug>/', views.jobs, name='job_view'),
 ]

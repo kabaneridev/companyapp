@@ -68,3 +68,9 @@ def successView(request):
 def job_list(request):
     f = JobFilter(request.GET, queryset=Job.objects.all())
     return render(request, 'company/job_list.html', {'filter': f})
+
+# view for job offer
+
+def jobs(request, slug):
+    job = get_object_or_404(Job, slug=slug)
+    return render(request, 'company/job_view.html', {'job': job})
