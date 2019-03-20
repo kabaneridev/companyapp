@@ -19,19 +19,24 @@
       </div>
       <div class="col col-md-12 bar">
         <div class="basic-info">
-          <div class="name">
+          <div class="name col col-md-2">
             <h2>{{ obj.name }}</h2>
           </div>
-          <div class="type">
-          {% if obj.icon != None %}
-            <img src="{{ obj.icon.url }}" width="16" height="16">
-          {% endif%}
-          {{  obj.type }} 
+          <div class="company col col-md-2">
+          	{{ obj.company }} {{ obj.city }}
           </div>
-          {% if obj.logo != None %}
-          <img class="company-logo" src="{{ obj.logo.url }}">
-          {% endif %}
-        </div>
+          <div class="stack col col-md-2">
+          	{% for obj in obj.stack.all %}
+          	{{ obj.name }}
+          	{% endfor %}
+          	
+          </div>
+          <div class="logo">
+          	<img class="company-logo" src="/media/{{ obj.company.logo }}">
+          </div>
+          <div class="salary col col-md-2 text-right">
+          	{{ obj.min_salary }} - {{ obj.max_salary }}
+          </div>
       </div>
     </a>
     <br>
