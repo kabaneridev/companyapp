@@ -9,31 +9,37 @@ from .serializers import CompanySerializer
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 
+# view for companies list
 
 def comp_list(request):
     f = CompanyFilter(request.GET, queryset=Company.objects.all())
     return render(request, 'company/comp_list.html', {'filter': f})
 
-def companies(request):
-    company = get_object_or_404(Company)
-    return render(request, 'company/comp_list.html', {'company': company})
+# view for home page
 
 def home(request):
     return render(request, 'company/home.html')
+
+# view for companies on company page
 
 def brands(request, slug):
     brand = get_object_or_404(Company, slug=slug)
     return render(request, 'company/comp_view.html', {'brand': brand})
 
-def stacks(request):
-    stack = get_object_or_404(Stack)
-    return render(request, 'company/comp_view.html', {'stack': stack})
+# view for job list
 
-def positions(request):
-    position = get_object_or_404(Position)
-    return render(request, 'company/comp_view.html', {'position': position})
+def job_list(request):
+    f = JobFilter(request.GET, queryset=Job.objects.all())
+    return render(request, 'company/job_list.html', {'filter': f})
+
+# view for job offer
+
+def jobs(request, slug):
+    job = get_object_or_404(Job, slug=slug)
+    return render(request, 'company/job_view.html', {'job': job})
 
 #rest api
+
 class CompanyViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
@@ -63,14 +69,3 @@ def emailView(request):
 def successView(request):
     return HttpResponse('Success! Thank you for your message.')
 
-# view for job list
-
-def job_list(request):
-    f = JobFilter(request.GET, queryset=Job.objects.all())
-    return render(request, 'company/job_list.html', {'filter': f})
-
-# view for job offer
-
-def jobs(request, slug):
-    job = get_object_or_404(Job, slug=slug)
-    return render(request, 'company/job_view.html', {'job': job})
