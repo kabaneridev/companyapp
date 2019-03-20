@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^list/$', object_filter, {'model': Company}),
     path('email/', emailView, name='email'),
     path('success/', successView, name='success'),
+    path('jobs/', views.job_list, name="job_list"),
 ]

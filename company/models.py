@@ -61,6 +61,17 @@ POSITIONS = (
         ('HR Recruiter', 'HR recruiter'),
     )
 
+LEVELS = (
+        ('Junior', 'Junior'),
+        ('Regular', 'Regular'),
+        ('Senior', 'Senior')
+    )
+
+EMP_TYPES = (
+        ('B2B', 'B2B'),
+        ('Pernament', 'Pernament'),
+
+    )
 # object position with relationship many to many to person
 
 class Position(models.Model):
@@ -126,3 +137,28 @@ class Stack(models.Model):
     def __str__(self):
         return self.name
 
+# model for job employmeent type
+
+class Emp_type(models.Model):
+    name = models.CharField(max_length=15, blank=False)
+    type = models.CharField(max_length=15, blank=False, choices=EMP_TYPES)
+
+    def __str__(self):
+        return self.name
+
+# model for job offer
+
+class Job(models.Model):
+    name = models.CharField(max_length=40, blank=False)
+    level = models.CharField(max_length=10, blank=False, choices=LEVELS)
+    stack = models.ManyToManyField('Stack', blank=False)
+    emp_type = models.ManyToManyField('Emp_type', blank=False)
+    company = models.ForeignKey('Company', on_delete=models.CASCADE, default=None, blank=False)
+    min_salary = models.PositiveIntegerField(validators=[MinValueValidator(1)], blank=False)
+    max_salary = models.IntegerField(default=None, blank=False)
+    description = models.TextField(blank=False)
+    clausule = models.TextField(blank=False)
+    city = models.CharField(max_length=20, blank=False, choices=CITIES, default=None)
+
+    def __str__(self):
+        return self.name

@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.views.generic import ListView, FormView
-from .models import Company, Stack, Position
+from .models import Company, Stack, Position, Job
 from .forms import ContactCompanyForm
-from .filters import CompanyFilter
+from .filters import CompanyFilter, JobFilter
 from rest_framework import viewsets
 from .serializers import CompanySerializer
 from django.core.mail import send_mail, BadHeaderError
@@ -62,3 +62,9 @@ def emailView(request):
 
 def successView(request):
     return HttpResponse('Success! Thank you for your message.')
+
+# view for job list
+
+def job_list(request):
+    f = JobFilter(request.GET, queryset=Job.objects.all())
+    return render(request, 'company/job_list.html', {'filter': f})
