@@ -214,6 +214,26 @@
             </div>
         </div>
     </div>
+        <div class="col col-md-2"></div>
+    <div class="col col-md-5"></div>
+    <div class="col col-md-5 card-section">
+        <div class="card-title" id="job_offers">
+            <span>Job Offers </span>
+                <div class="job-offers" style="padding-top: 70px;">
+                    {% for job in brand.job_set.all %}
+                    <div class="col col-md-12" style="padding: 20px;">
+                        <div class="title" style="color: black !important;">
+                            <a href="/jobs/{{job.slug}}">{{ job.name }}</a>
+                        </div>
+                        <div class="salary">
+                            {{ job.min_salary }} - {{ job.max_salary }}
+                        </div>
+                    </div>      
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
 </div> 
 
 {% endblock %}

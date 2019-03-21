@@ -1,0 +1,25 @@
+{% extends 'company/base.html' %}
+{% load static %}
+{% block content %}
+
+                {{ job.name }} <br>
+                {{ job.level }} <br>
+                <a href="/brands/{{ job.company.slug }}">
+                <img class="logo" style="max-width: 80px; max-height: 80px;" src="{{job.company.logo.url}}"></a> <br> 
+                {{ job.min_salary }} - {{ job.max_salary }} <br>
+
+                {% for emp_type in job.emp_type.all %}
+                {{ emp_type.name }} <br>
+                {% endfor %}
+
+                {% for stack in job.stack.all %}
+                {{ stack.name }} 
+                {% endfor %}
+
+                <br>{{ job.city }} <br>
+                {{ job.description }} <br>
+                {{ job.clausule }} <br>
+
+
+                
+{% endblock %}

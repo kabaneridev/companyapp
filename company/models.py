@@ -1,5 +1,4 @@
 from django.db import models
-from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator, URLValidator

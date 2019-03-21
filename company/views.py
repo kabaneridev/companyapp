@@ -20,6 +20,11 @@ def comp_list(request):
 def home(request):
     return render(request, 'company/home.html')
 
+# view for posting job
+
+def post_job(request):
+    return render(request, 'company/post_job.html')
+
 # view for companies on company page
 
 def brands(request, slug):
