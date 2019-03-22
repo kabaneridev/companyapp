@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls import url
 from . import views
 from django_filters.views import object_filter
@@ -14,5 +14,6 @@ urlpatterns = [
     path('success/', successView, name='success'),
     path('jobs/', views.job_list, name="job_list"),
     path('jobs/<slug:slug>/', views.jobs, name='job_view'),
-    path('post_job/', views.post_job, name="post_job")
+    path('add-offer/', views.post_job, name="post_job"),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

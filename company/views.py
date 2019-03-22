@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, FormView
 from .models import Company, Stack, Position, Job
-from .forms import ContactCompanyForm
+from .forms import ContactCompanyForm, JobForm
 from .filters import CompanyFilter, JobFilter
 from rest_framework import viewsets
 from .serializers import CompanySerializer
@@ -21,9 +22,17 @@ def home(request):
     return render(request, 'company/home.html')
 
 # view for posting job
-
+@login_required
 def post_job(request):
-    return render(request, 'company/post_job.html')
+    form = JobForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
+    context = {
+        'form': form
+    }
+    
+    return render(request, 'company/post_job.html', context)
 
 # view for companies on company page
 

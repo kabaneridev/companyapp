@@ -11,23 +11,18 @@ class ContactCompanyForm(forms.Form):
 
 # form for posting job
 
-class PostJob(forms.Form):
+class JobForm(forms.ModelForm):
 	class Meta:
 		model = Job
-		name = forms.CharField(max_length=40)
-		level = forms.CharField(
-			max_length=10,
-			widget=forms.Select(choices=LEVELS),
-		)
-		stack = forms.ModelMultipleChoiceField(Stack.objects.all(), required=True)
-		emp_type = forms.ModelMultipleChoiceField(Emp_type.objects.all(), required=True)
-		min_salary = forms.IntegerField(validators=[MinValueValidator(1)], required=True)
-		max_salary = forms.IntegerField(required=True)
-		description = forms.CharField(
-			required=True,
-			widget=forms.Textarea,
-		)
-		city = forms.CharField(
-			max_length=20,
-			widget=forms.Select(choices=CITIES),
-		)
+		fields = [
+			'name',
+			'level',
+			'stack',
+			'emp_type',
+			'min_salary',
+			'max_salary',
+			'description',
+			'city',
+			'company'
+		]
+

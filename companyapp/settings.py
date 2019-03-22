@@ -150,3 +150,6 @@ EMAIL_HOST_USER = 'xxx'
 EMAIL_HOUST_PASSWORD = 'xxx!'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+# login redirect
+LOGIN_REDIRECT_URL = '/'

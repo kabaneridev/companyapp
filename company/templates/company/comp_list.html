@@ -22,12 +22,12 @@
             <h2>{{ obj.name }}</h2>
           </div>
           <div class="type">
-          {% if obj.icon != None %}
+          {% if obj.icon %}
             <img src="{{ obj.icon.url }}" width="16" height="16">
           {% endif%}
           {{  obj.type }} 
           </div>
-          {% if obj.logo != None %}
+          {% if obj.logo %}
           <img class="company-logo" src="{{ obj.logo.url }}">
           {% endif %}
         </div>
