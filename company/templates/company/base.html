@@ -76,7 +76,7 @@
       <div class="modal-body">
         <h1>Contact Us</h1>
             <form method="post" action="{% url 'email' %}">
-                <input type="hidden" name="csrfmiddlewaretoken" value="Y1Jgj8KPMB9boVyEylVKxs7BwOG0tYrcUjB1cThdOmRDlVUrSYol4OZOZclcW63q">
+                {% csrf_token %}
                 <p><label for="id_name">Name:</label> <input type="text" name="name" maxlength="150" required="" id="id_name"></p>
             <p><label for="id_company">Company:</label> <input type="text" name="company" required="" id="id_company"></p>
             <p><label for="id_from_email">From email:</label> <input type="email" name="from_email" required="" id="id_from_email"></p>

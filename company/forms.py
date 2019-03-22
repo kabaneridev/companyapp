@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from .models import Job, Company, LEVELS, Stack, Emp_type, CITIES
 from django.core.validators import MinValueValidator
 
-class ContactCompanyForm(forms.Form):
+class ContactForm(forms.Form):
     name = forms.CharField(max_length=150)
     company = forms.CharField(required=True)
     from_email = forms.EmailField(required=True)

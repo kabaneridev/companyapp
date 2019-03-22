@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, FormView
 from .models import Company, Stack, Position, Job
-from .forms import ContactCompanyForm, JobForm
+from .forms import ContactForm, JobForm
 from .filters import CompanyFilter, JobFilter
 from rest_framework import viewsets
 from .serializers import CompanySerializer
@@ -65,16 +65,16 @@ class CompanyViewSet(viewsets.ModelViewSet):
 
 def emailView(request):
     if request.method == 'GET':
-        form = ContactCompanyForm()
+        form = ContactForm()
     else:
-        form = ContactCompanyForm(request.POST)
+        form = ContactForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
             company = form.cleaned_data['company']
             from_email = form.cleaned_data['from_email']
             phone_number = form.cleaned_data['phone_number']
             try:
-                send_mail('Contact Form', company, from_email, ['krplominski@gmail.com'], fail_silently=False)
+                send_mail('Contact Form', company, from_email, ['krplominski@gmail.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('/success')
