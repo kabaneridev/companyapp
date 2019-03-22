@@ -68,7 +68,11 @@ LEVELS = (
 
 EMP_TYPES = (
         ('B2B', 'B2B'),
-        ('Pernament', 'Pernament'),
+        ('Umowa o prace', 'Umowa o prace'),
+        ('Umowa zlecenie', 'Umowa zlecenie'),
+        ('Umowa o dzielo', 'Umowa o dzielo'),
+        ('Staz', 'Staz'),
+        ('Praktyki', 'Praktyki')
 
     )
 # object position with relationship many to many to person
