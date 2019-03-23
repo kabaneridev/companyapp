@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, FormView
 from .models import Company, Stack, Position, Job
-from .forms import ContactForm, JobForm
+from .forms import ContactForm, JobForm, JobApply
 from .filters import CompanyFilter, JobFilter
 from rest_framework import viewsets
 from .serializers import CompanySerializer
@@ -79,6 +79,32 @@ def emailView(request):
                 return HttpResponse('Invalid header found.')
             return redirect('/success')
     return render(request, "company/email.html", {'form': form})
+
+def successView(request):
+    return HttpResponse('Success! Thank you for your message.')
+
+# view for job applying form
+
+def jobApply(request):
+    if request.method == 'GET':
+        form = JobApply()
+    else:
+        form = JobApply(request.POST)
+        if form.is_valid():
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            from_email = form.cleaned_data['from_email']
+            CV = form.cleaned_data['CV']
+            cover_letter = form.cleaned_data['cover_letter']
+            job_name = job_name
+            job_company = job_company
+            send_to = send_to
+            try:
+                send_mail('Job apply form', first_name, last_name, from_email, CV, job_name, job_company, ['send_to'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('/success')
+    return render(request, "company/job_apply.html", {'form': form})
 
 def successView(request):
     return HttpResponse('Success! Thank you for your message.')

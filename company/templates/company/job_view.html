@@ -20,6 +20,13 @@
                 {{ job.description }} <br>
                 {{ job.clausule }} <br>
 
-
+<h1>Contact Us</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ job_apply_form }}
+    <div class="form-actions">
+      <button type="submit">Send</button>
+    </div>
+</form>
                 
 {% endblock %}

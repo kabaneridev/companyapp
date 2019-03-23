@@ -163,6 +163,7 @@ class Job(models.Model):
     clausule = models.TextField(blank=False)
     city = models.CharField(max_length=20, blank=False, choices=CITIES, default=None)
     slug = models.SlugField(unique=True)
+    contact_email = models.EmailField(blank=False)
 
     def __str__(self):
         return self.name

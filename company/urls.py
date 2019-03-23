@@ -16,4 +16,5 @@ urlpatterns = [
     path('jobs/<slug:slug>/', views.jobs, name='job_view'),
     path('add-offer/', views.post_job, name="post_job"),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('job_apply/', views.jobApply, name="jobApply")
 ]
